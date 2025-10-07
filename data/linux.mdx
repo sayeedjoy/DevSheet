@@ -1,0 +1,392 @@
+---
+title: Linux চিটশিট
+description: লিনাক্স কমান্ডের বাংলা চিটশিট
+icon: linux
+category: operating-system
+---
+
+# Linux চিটশিট
+
+লিনাক্স একটি শক্তিশালী অপারেটিং সিস্টেম যা কমান্ড লাইনের মাধ্যমে সম্পূর্ণ নিয়ন্ত্রণ প্রদান করে।
+
+## ফাইল সিস্টেম নেভিগেশন
+
+### ডিরেক্টরি কমান্ড
+```bash
+# বর্তমান ডিরেক্টরি দেখুন
+pwd
+
+# ডিরেক্টরি পরিবর্তন করুন
+cd /path/to/directory
+
+# হোম ডিরেক্টরিতে যান
+cd ~
+
+# পূর্ববর্তী ডিরেক্টরিতে যান
+cd -
+
+# এক লেভেল উপরে যান
+cd ..
+```
+
+### ফাইল এবং ডিরেক্টরি তালিকা
+```bash
+# ফাইল তালিকা দেখুন
+ls
+
+# বিস্তারিত তালিকা
+ls -l
+
+# লুকানো ফাইল সহ
+ls -la
+
+# মানব-পঠনযোগ্য সাইজ
+ls -lh
+
+# সময় অনুসারে সাজান
+ls -lt
+```
+
+## ফাইল অপারেশন
+
+### ফাইল তৈরি এবং সম্পাদনা
+```bash
+# খালি ফাইল তৈরি করুন
+touch filename.txt
+
+# ফাইল তৈরি এবং লিখুন
+echo "টেক্সট" > file.txt
+
+# ফাইলে যোগ করুন
+echo "আরও টেক্সট" >> file.txt
+
+# ফাইল কপি করুন
+cp source.txt destination.txt
+
+# ডিরেক্টরি কপি করুন
+cp -r source_dir dest_dir
+
+# ফাইল সরান/রিনেম করুন
+mv oldname.txt newname.txt
+```
+
+### ফাইল মুছে ফেলা
+```bash
+# ফাইল মুছুন
+rm filename.txt
+
+# নিশ্চিতকরণ সহ মুছুন
+rm -i filename.txt
+
+# ফোর্স মুছুন (সাবধানে!)
+rm -f filename.txt
+
+# ডিরেক্টরি মুছুন
+rm -r directory/
+
+# ডিরেক্টরি ফোর্স মুছুন
+rm -rf directory/
+```
+
+## ফাইল দেখা এবং অনুসন্ধান
+
+### ফাইল বিষয়বস্তু দেখা
+```bash
+# সম্পূর্ণ ফাইল দেখুন
+cat filename.txt
+
+# প্রথম ১০ লাইন
+head filename.txt
+
+# শেষ ১০ লাইন
+tail filename.txt
+
+# রিয়েল-টাইম লগ দেখুন
+tail -f logfile.log
+
+# পেজ করে দেখুন
+less filename.txt
+more filename.txt
+```
+
+### অনুসন্ধান এবং ফাইন্ড
+```bash
+# ফাইল খুঁজুন
+find /path -name "filename"
+
+# নির্দিষ্ট টাইপের ফাইল
+find /path -type f -name "*.txt"
+
+# সাইজ অনুযায়ী খুঁজুন
+find /path -size +100M
+
+# টেক্সট অনুসন্ধান করুন
+grep "pattern" filename.txt
+
+# রিকার্সিভ অনুসন্ধান
+grep -r "pattern" /path/
+
+# কেস-ইনসেনসিটিভ
+grep -i "pattern" filename.txt
+```
+
+## পারমিশন এবং মালিকানা
+
+### ফাইল পারমিশন
+```bash
+# পারমিশন পরিবর্তন করুন
+chmod 755 filename.sh
+
+# ইউজার এক্সিকিউট যোগ করুন
+chmod +x script.sh
+
+# সবার জন্য রিড যোগ করুন
+chmod a+r file.txt
+
+# রিকার্সিভ পারমিশন
+chmod -R 755 directory/
+
+# মালিক পরিবর্তন করুন
+chown user:group filename.txt
+
+# রিকার্সিভ মালিক পরিবর্তন
+chown -R user:group directory/
+```
+
+### পারমিশন বোঝা
+```
+rwx rwx rwx
+│   │   └── অন্যান্য (others)
+│   └────── গ্রুপ (group)  
+└────────── মালিক (owner)
+
+r = read (4)
+w = write (2)
+x = execute (1)
+
+755 = rwxr-xr-x
+644 = rw-r--r--
+```
+
+## প্রসেস ম্যানেজমেন্ট
+
+### প্রসেস দেখা
+```bash
+# চলমান প্রসেস দেখুন
+ps aux
+
+# ইন্টারেক্টিভ প্রসেস ভিউয়ার
+top
+
+# উন্নত প্রসেস মনিটর
+htop
+
+# নির্দিষ্ট প্রসেস খুঁজুন
+ps aux | grep process_name
+```
+
+### প্রসেস নিয়ন্ত্রণ
+```bash
+# ব্যাকগ্রাউন্ডে চালান
+command &
+
+# ব্যাকগ্রাউন্ড জবস দেখুন
+jobs
+
+# ফোরগ্রাউন্ডে আনুন
+fg %1
+
+# প্রসেস কিল করুন
+kill PID
+
+# ফোর্স কিল
+kill -9 PID
+
+# নাম দিয়ে কিল
+killall process_name
+```
+
+## নেটওয়ার্ক কমান্ড
+
+### নেটওয়ার্ক তথ্য
+```bash
+# IP ঠিকানা দেখুন
+ip addr
+ifconfig
+
+# নেটওয়ার্ক কানেকশন
+netstat -tuln
+
+# পিং টেস্ট
+ping google.com
+
+# ডোমেইন লুকআপ
+nslookup example.com
+dig example.com
+
+# ট্রেসরুট
+traceroute google.com
+```
+
+### ডাউনলোড এবং ট্রান্সফার
+```bash
+# ফাইল ডাউনলোড করুন
+wget https://example.com/file.zip
+
+# cURL দিয়ে ডাউনলোড
+curl -O https://example.com/file.zip
+
+# SCP দিয়ে ফাইল কপি করুন
+scp file.txt user@host:/path/
+
+# SSH কানেক্ট করুন
+ssh user@hostname
+```
+
+## সিস্টেম তথ্য
+
+### হার্ডওয়্যার এবং সিস্টেম
+```bash
+# সিস্টেম তথ্য
+uname -a
+
+# CPU তথ্য
+lscpu
+cat /proc/cpuinfo
+
+# মেমরি তথ্য
+free -h
+
+# ডিস্ক ব্যবহার
+df -h
+
+# ডিরেক্টরি সাইজ
+du -sh directory/
+
+# সিস্টেম আপটাইম
+uptime
+```
+
+## প্যাকেজ ম্যানেজমেন্ট
+
+### Ubuntu/Debian (apt)
+```bash
+# প্যাকেজ লিস্ট আপডেট
+sudo apt update
+
+# প্যাকেজ আপগ্রেড
+sudo apt upgrade
+
+# প্যাকেজ ইনস্টল
+sudo apt install package_name
+
+# প্যাকেজ রিমুভ
+sudo apt remove package_name
+
+# প্যাকেজ অনুসন্ধান
+apt search package_name
+```
+
+### CentOS/RHEL (yum/dnf)
+```bash
+# প্যাকেজ ইনস্টল
+sudo yum install package_name
+sudo dnf install package_name
+
+# প্যাকেজ রিমুভ
+sudo yum remove package_name
+
+# প্যাকেজ আপডেট
+sudo yum update
+```
+
+## কম্প্রেশন এবং আর্কাইভ
+
+### tar কমান্ড
+```bash
+# ফোল্ডার কম্প্রেস করুন
+tar -czf archive.tar.gz /path/to/folder
+
+# আর্কাইভ এক্সট্র্যাক্ট করুন
+tar -xzf archive.tar.gz
+
+# আর্কাইভ বিষয়বস্তু দেখুন
+tar -tzf archive.tar.gz
+
+# নির্দিষ্ট স্থানে এক্সট্র্যাক্ট
+tar -xzf archive.tar.gz -C /path/
+```
+
+### zip/unzip
+```bash
+# ফাইল জিপ করুন
+zip archive.zip file1 file2
+
+# ফোল্ডার জিপ করুন
+zip -r archive.zip folder/
+
+# আনজিপ করুন
+unzip archive.zip
+
+# নির্দিষ্ট স্থানে আনজিপ
+unzip archive.zip -d /path/
+```
+
+## ইউজার ম্যানেজমেন্ট
+
+### ইউজার কমান্ড
+```bash
+# নতুন ইউজার যোগ করুন
+sudo useradd username
+
+# ইউজার পাসওয়ার্ড সেট করুন
+sudo passwd username
+
+# ইউজার মুছুন
+sudo userdel username
+
+# ইউজার গ্রুপে যোগ করুন
+sudo usermod -aG groupname username
+
+# বর্তমান ইউজার দেখুন
+whoami
+
+# লগইন ইউজার দেখুন
+who
+```
+
+## টিপস এবং ট্রিকস
+
+### উপকারী শর্টকাট
+```bash
+# কমান্ড হিস্ট্রি
+history
+
+# পূর্ববর্তী কমান্ড চালান
+!!
+
+# Ctrl+R - কমান্ড সার্চ
+# Ctrl+C - কমান্ড ক্যান্সেল
+# Ctrl+Z - প্রসেস সাসপেন্ড
+# Ctrl+D - টার্মিনাল বন্ধ
+```
+
+### পাইপ এবং রিডাইরেক্ট
+```bash
+# আউটপুট রিডাইরেক্ট করুন
+command > output.txt
+
+# এরর রিডাইরেক্ট করুন
+command 2> error.txt
+
+# উভয় রিডাইরেক্ট
+command &> all.txt
+
+# পাইপ ব্যবহার করুন
+command1 | command2
+
+# একাধিক কমান্ড
+command1 && command2
+command1 || command2
+```
+

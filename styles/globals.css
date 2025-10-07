@@ -1,0 +1,232 @@
+/* Import SolaimanLipi font for Bangla text with display swap for better performance */
+@import url('https://fonts.maateen.me/solaiman-lipi/font.css');
+
+@import "tailwindcss";
+
+@config "../tailwind.config.js";
+
+:root {
+  --font-bangla: 'SolaimanLipi', sans-serif;
+  --font-code: 'Consolas', 'Courier New', monospace;
+}
+
+/* Default font: Inter for all text */
+* {
+  font-family: var(--font-sans), 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Code blocks: Always use Consolas */
+code,
+pre,
+pre code,
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: var(--font-code) !important;
+}
+
+/* Bangla text: Override with SolaimanLipi only where .bangla-text class is applied */
+.bangla-text,
+.bangla-text h1,
+.bangla-text h2,
+.bangla-text h3,
+.bangla-text h4,
+.bangla-text h5,
+.bangla-text h6,
+.bangla-text p,
+.bangla-text li,
+.bangla-text a,
+.bangla-text span,
+.bangla-text strong,
+.bangla-text div {
+  font-family: var(--font-bangla) !important;
+}
+
+/* Line clamp utilities for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Ensure code inside Bangla text still uses Consolas */
+.bangla-text code,
+.bangla-text pre,
+.bangla-text pre code {
+  font-family: var(--font-code) !important;
+}
+
+/* Enhanced code block styling */
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  color: inherit;
+}
+
+/* Syntax highlighting for better code readability */
+code[class*="language-"] .token.comment,
+code[class*="language-"] .token.prolog,
+code[class*="language-"] .token.doctype,
+code[class*="language-"] .token.cdata {
+  color: #6a9955;
+  font-style: italic;
+}
+
+code[class*="language-"] .token.punctuation {
+  color: #d4d4d4;
+}
+
+code[class*="language-"] .token.property,
+code[class*="language-"] .token.tag,
+code[class*="language-"] .token.boolean,
+code[class*="language-"] .token.number,
+code[class*="language-"] .token.constant,
+code[class*="language-"] .token.symbol {
+  color: #b5cea8;
+}
+
+code[class*="language-"] .token.selector,
+code[class*="language-"] .token.attr-name,
+code[class*="language-"] .token.string,
+code[class*="language-"] .token.char,
+code[class*="language-"] .token.builtin,
+code[class*="language-"] .token.inserted {
+  color: #ce9178;
+}
+
+code[class*="language-"] .token.operator,
+code[class*="language-"] .token.entity,
+code[class*="language-"] .token.url,
+code[class*="language-"] .token.variable {
+  color: #d4d4d4;
+}
+
+code[class*="language-"] .token.atrule,
+code[class*="language-"] .token.attr-value,
+code[class*="language-"] .token.keyword,
+code[class*="language-"] .token.class-name {
+  color: #569cd6;
+}
+
+code[class*="language-"] .token.function {
+  color: #dcdcaa;
+}
+
+code[class*="language-"] .token.regex,
+code[class*="language-"] .token.important {
+  color: #d16969;
+}
+
+code[class*="language-"] .token.important,
+code[class*="language-"] .token.bold {
+  font-weight: bold;
+}
+
+code[class*="language-"] .token.italic {
+  font-style: italic;
+}
+
+/* Dark mode adjustments for code */
+.dark code[class*="language-"] {
+  color: #d4d4d4;
+}
+
+.dark code[class*="language-"] .token.comment,
+.dark code[class*="language-"] .token.prolog,
+.dark code[class*="language-"] .token.doctype,
+.dark code[class*="language-"] .token.cdata {
+  color: #6a9955;
+}
+
+.dark code[class*="language-"] .token.punctuation {
+  color: #d4d4d4;
+}
+
+/* Light mode code colors */
+:root:not(.dark) code[class*="language-"] {
+  color: #24292e;
+}
+
+:root:not(.dark) code[class*="language-"] .token.comment {
+  color: #6a737d;
+}
+
+:root:not(.dark) code[class*="language-"] .token.string {
+  color: #032f62;
+}
+
+:root:not(.dark) code[class*="language-"] .token.keyword {
+  color: #d73a49;
+}
+
+:root:not(.dark) code[class*="language-"] .token.function {
+  color: #6f42c1;
+}
+
+:root:not(.dark) code[class*="language-"] .token.number {
+  color: #005cc5;
+}
+
+/* Custom token classes for inline syntax highlighting */
+.token-comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.token-keyword {
+  color: #569cd6;
+  font-weight: 600;
+}
+
+.token-string {
+  color: #ce9178;
+}
+
+.token-function {
+  color: #dcdcaa;
+}
+
+.token-number {
+  color: #b5cea8;
+}
+
+.token-flag {
+  color: #9cdcfe;
+}
+
+/* Light mode custom tokens */
+:root:not(.dark) .token-comment {
+  color: #6a737d;
+}
+
+:root:not(.dark) .token-keyword {
+  color: #d73a49;
+  font-weight: 600;
+}
+
+:root:not(.dark) .token-string {
+  color: #032f62;
+}
+
+:root:not(.dark) .token-function {
+  color: #6f42c1;
+}
+
+:root:not(.dark) .token-number {
+  color: #005cc5;
+}
+
+:root:not(.dark) .token-flag {
+  color: #005cc5;
+}
