@@ -5,76 +5,436 @@ icon: git
 category: version-control
 ---
 
-# Welcome
+# Git চিটশিট
 
-This is a **live demo** of MDXEditor with all default features on.
+Git হল একটি ডিস্ট্রিবিউটেড ভার্সন কন্ট্রোল সিস্টেম যা সফটওয়্যার ডেভেলপমেন্টে কোড পরিবর্তন ট্র্যাক করতে ব্যবহৃত হয়।
 
-> The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible.
-> The idea is that a Markdown-formatted document should be publishable as-is, as plain text,
-> without looking like it’s been marked up with tags or formatting instructions.
+## কনফিগারেশন (Configuration)
 
-[— Daring Fireball](https://daringfireball.net/projects/markdown/).
+### ব্যবহারকারী তথ্য সেট করা
+```bash
+# গ্লোবাল ইউজার নেম সেট করুন
+git config --global user.name "username"
 
-In here, you can find the following markdown elements:
+# গ্লোবাল ইউজার ইমেইল সেট করুন
+git config --global user.email "user@example.com"
 
-* Headings
-* Lists
-  * Unordered
-  * Ordered
-  * Check lists
-  * And nested ;)
-* Links
-* Bold/Italic/Underline formatting
-* Tables
-* Code block editors
-* And much more.
+# লোকাল রিপোজিটরির জন্য ইউজার নেম
+git config user.name "username"
 
-The current editor content is styled using the `@tailwindcss/typography` [plugin](https://tailwindcss.com/docs/typography-plugin).
-
-## What can you do here?
-
-This is a great location for you to test how editing markdown feels. If you have an existing markdown source, you can switch to source mode using the toggle group in the top right, paste it in there, and go back to rich text mode.
-
-If you need a few ideas, here's what you can try:
-
-1. Add your own code sample
-2. Change the type of the headings
-3. Insert a table, add a few rows and columns
-4. Switch back to source markdown to see what you're going to get as an output
-5. Test the diff feature to see how the markdown has changed
-6. Add a frontmatter block through the toolbar button
-
-## A code sample
-
-MDXEditor embeds CodeMirror for code editing.
-
-```tsx
-export default function App() {
-  return (<div>Hello world</div>)
-}
+# লোকাল রিপোজিটরির জন্য ইউজার ইমেইল
+git config user.email "user@example.com"
 ```
 
-## A live code example
+### কনফিগারেশন বাতিল করা
+```bash
+# গ্লোবাল ইউজার নেম বাতিল করুন
+git config --global --unset-all user.name
 
-The block below is a live React component. You can configure multiple live code presets that specify the available npm packages and the default imports. You can also specify a default component that will be rendered in the live code block.
+# গ্লোবাল ইউজার ইমেইল বাতিল করুন
+git config --global --unset-all user.email
 
-```jsx live
-export default function App() {
-  return (<div>
-  <p>This is a live React component, that's being previewed in codesandbox. </p>
-  <p>Editing it will update the fenced codeblock in the markdown.</p>
-  </div>)
-}
+# লোকাল ইউজার নেম বাতিল করুন
+git config --unset user.name
+
+# লোকাল ইউজার ইমেইল বাতিল করুন
+git config --unset user.email
 ```
 
-## A table
+### কনফিগারেশন দেখা
+```bash
+# সব কনফিগারেশন দেখুন
+git config --list
 
-Play with the table below - add rows, columns, change column alignment. When editing,
-you can navigate the cells with `enter`, `shift+enter`, `tab` and `shift+tab`.
+# নির্দিষ্ট কনফিগারেশন দেখুন
+git config user.name
+git config user.email
+```
 
-| Item              | In Stock | Price |
-| :---------------- | :------: | ----: |
-| Python Hat        |   True   | 23.99 |
-| SQL Hat           |   True   | 23.99 |
-| Codecademy Tee    |   False  | 19.99 |
-| Codecademy Hoodie |   False  | 42.99 |
+## রিপোজিটরি তৈরি এবং ক্লোন
+
+### নতুন রিপোজিটরি
+```bash
+# নতুন রিপোজিটরি শুরু করুন
+git init
+
+# নির্দিষ্ট ফোল্ডারে রিপোজিটরি শুরু করুন
+git init project-name
+
+# রিমোট রিপোজিটরি ক্লোন করুন
+git clone https://github.com/user/repo.git
+
+# নির্দিষ্ট ফোল্ডারে ক্লোন করুন
+git clone https://github.com/user/repo.git my-project
+
+# শুধু নির্দিষ্ট ব্রাঞ্চ ক্লোন করুন
+git clone -b branch-name https://github.com/user/repo.git
+```
+
+## ফাইল ট্র্যাকিং এবং স্টেজিং
+
+### ফাইল অবস্থা দেখা
+```bash
+# রিপোজিটরির বর্তমান অবস্থা দেখুন
+git status
+
+# সংক্ষিপ্ত অবস্থা দেখুন
+git status -s
+
+# অগ্নোর ফাইল সহ দেখুন
+git status --ignored
+```
+
+### ফাইল যোগ এবং স্টেজিং
+```bash
+# নির্দিষ্ট ফাইল স্টেজ করুন
+git add filename.txt
+
+# সব ফাইল স্টেজ করুন
+git add .
+
+# নির্দিষ্ট টাইপের ফাইল স্টেজ করুন
+git add *.js
+
+# ইন্টারেক্টিভ স্টেজিং
+git add -i
+
+# প্যাচ স্টেজিং
+git add -p
+```
+
+### ফাইল আনস্টেজিং
+```bash
+# স্টেজ করা ফাইল আনস্টেজ করুন
+git reset filename.txt
+
+# সব স্টেজ করা ফাইল আনস্টেজ করুন
+git reset
+
+# নির্দিষ্ট কমিট থেকে আনস্টেজ করুন
+git reset HEAD~1
+```
+
+## কমিট (Commit)
+
+### কমিট তৈরি
+```bash
+# স্টেজ করা ফাইল কমিট করুন
+git commit -m "commit message"
+
+# সব ট্র্যাক করা ফাইল কমিট করুন (স্টেজ ছাড়াই)
+git commit -am "commit message"
+
+# কমিট মেসেজ এডিটর দিয়ে লিখুন
+git commit
+
+# কমিটের বিস্তারিত তথ্য যোগ করুন
+git commit -m "commit message" -m "detailed description"
+```
+
+### কমিট ইতিহাস
+```bash
+# কমিট ইতিহাস দেখুন
+git log
+
+# সংক্ষিপ্ত লগ দেখুন
+git log --oneline
+
+# গ্রাফ সহ লগ দেখুন
+git log --graph --oneline
+
+# নির্দিষ্ট সংখ্যক কমিট দেখুন
+git log -5
+
+# নির্দিষ্ট ফাইলের ইতিহাস দেখুন
+git log filename.txt
+```
+
+### কমিট পরিবর্তন
+```bash
+# শেষ কমিটের মেসেজ পরিবর্তন করুন
+git commit --amend -m "new message"
+
+# শেষ কমিটে ফাইল যোগ করুন
+git add filename.txt
+git commit --amend --no-edit
+
+# কমিট আনডু করুন (কমিট বাতিল করুন)
+git reset --soft HEAD~1
+```
+
+## ব্রাঞ্চ (Branch)
+
+### ব্রাঞ্চ তৈরি এবং পরিবর্তন
+```bash
+# সব লোকাল ব্রাঞ্চ দেখুন
+git branch
+
+# সব ব্রাঞ্চ দেখুন (রিমোট সহ)
+git branch -a
+
+# নতুন ব্রাঞ্চ তৈরি করুন
+git branch branch-name
+
+# নতুন ব্রাঞ্চ তৈরি করে সেখানে যান
+git checkout -b branch-name
+
+# ব্রাঞ্চ পরিবর্তন করুন
+git checkout branch-name
+
+# পূর্ববর্তী ব্রাঞ্চে যান
+git checkout -
+```
+
+### ব্রাঞ্চ অপারেশন
+```bash
+# ব্রাঞ্চ মুছুন
+git branch -d branch-name
+
+# ফোর্স ব্রাঞ্চ মুছুন
+git branch -D branch-name
+
+# রিমোট ব্রাঞ্চ মুছুন
+git push origin --delete branch-name
+
+# ব্রাঞ্চ রিনেম করুন
+git branch -m old-name new-name
+```
+
+## মার্জ (Merge) এবং রিবেস (Rebase)
+
+### মার্জিং
+```bash
+# বর্তমান ব্রাঞ্চে অন্য ব্রাঞ্চ মার্জ করুন
+git merge branch-name
+
+# ফাস্ট-ফরওয়ার্ড মার্জ
+git merge --ff-only branch-name
+
+# নো-ফাস্ট-ফরওয়ার্ড মার্জ
+git merge --no-ff branch-name
+
+# মার্জ কনফ্লিক্ট রেজোলভ করুন
+git add resolved-file.txt
+git commit
+```
+
+### রিবেসিং
+```bash
+# বর্তমান ব্রাঞ্চ রিবেস করুন
+git rebase branch-name
+
+# ইন্টারেক্টিভ রিবেস
+git rebase -i HEAD~3
+
+# রিবেস কন্টিনিউ করুন
+git rebase --continue
+
+# রিবেস বাতিল করুন
+git rebase --abort
+```
+
+## রিমোট রিপোজিটরি
+
+### রিমোট যোগ এবং দেখা
+```bash
+# রিমোট রিপোজিটরি যোগ করুন
+git remote add origin https://github.com/user/repo.git
+
+# সব রিমোট দেখুন
+git remote -v
+
+# রিমোট রিপোজিটরি দেখুন
+git remote show origin
+
+# রিমোট রিপোজিটরি মুছুন
+git remote remove origin
+```
+
+### পুশ এবং পুল
+```bash
+# রিমোটে পুশ করুন
+git push origin branch-name
+
+# প্রথমবার পুশ করুন
+git push -u origin branch-name
+
+# সব ব্রাঞ্চ পুশ করুন
+git push --all origin
+
+# রিমোট থেকে পুল করুন
+git pull origin branch-name
+
+# রিমোট ব্রাঞ্চ ফেচ করুন
+git fetch origin
+```
+
+## স্ট্যাশ (Stash)
+
+### স্ট্যাশ অপারেশন
+```bash
+# বর্তমান পরিবর্তন স্ট্যাশ করুন
+git stash
+
+# মেসেজ সহ স্ট্যাশ করুন
+git stash save "stash message"
+
+# স্ট্যাশ লিস্ট দেখুন
+git stash list
+
+# স্ট্যাশ প্রয়োগ করুন
+git stash apply
+
+# স্ট্যাশ প্রয়োগ করে মুছুন
+git stash pop
+
+# নির্দিষ্ট স্ট্যাশ প্রয়োগ করুন
+git stash apply stash@{0}
+
+# স্ট্যাশ মুছুন
+git stash drop stash@{0}
+
+# সব স্ট্যাশ মুছুন
+git stash clear
+```
+
+## ট্যাগ (Tag)
+
+### ট্যাগ তৈরি এবং ব্যবস্থাপনা
+```bash
+# লাইটওয়েট ট্যাগ তৈরি করুন
+git tag tag-name
+
+# অ্যানোটেটেড ট্যাগ তৈরি করুন
+git tag -a tag-name -m "tag message"
+
+# সব ট্যাগ দেখুন
+git tag
+
+# ট্যাগ রিমোটে পুশ করুন
+git push origin tag-name
+
+# সব ট্যাগ পুশ করুন
+git push origin --tags
+
+# ট্যাগ মুছুন
+git tag -d tag-name
+
+# রিমোট ট্যাগ মুছুন
+git push origin --delete tag-name
+```
+
+## ফাইল অপারেশন
+
+### ফাইল মুছে ফেলা
+```bash
+# ফাইল মুছুন এবং স্টেজ করুন
+git rm filename.txt
+
+# ফাইল মুছুন কিন্তু লোকালি রাখুন
+git rm --cached filename.txt
+
+# ফোল্ডার রিকার্সিভ মুছুন
+git rm -r folder-name
+```
+
+### ফাইল মুভ এবং রিনেম
+```bash
+# ফাইল মুভ/রিনেম করুন
+git mv old-name.txt new-name.txt
+
+# ফাইল অন্য ফোল্ডারে মুভ করুন
+git mv file.txt folder/file.txt
+```
+
+## অনুসন্ধান এবং ফিল্টার
+
+### কমিট অনুসন্ধান
+```bash
+# কমিট মেসেজ অনুসন্ধান করুন
+git log --grep="search term"
+
+# নির্দিষ্ট লেখক অনুসন্ধান করুন
+git log --author="author name"
+
+# তারিখ অনুযায়ী অনুসন্ধান করুন
+git log --since="2023-01-01" --until="2023-12-31"
+
+# ফাইলের পরিবর্তন অনুসন্ধান করুন
+git log -S "search term"
+```
+
+### ফাইল অনুসন্ধান
+```bash
+# ফাইলে পরিবর্তন অনুসন্ধান করুন
+git log --follow filename.txt
+
+# ফাইলের ব্লেম দেখুন
+git blame filename.txt
+
+# ফাইলের নির্দিষ্ট লাইনের ইতিহাস
+git log -L 10,20:filename.txt
+```
+
+## আদার কমান্ড
+
+### চেরি-পিক
+```bash
+# নির্দিষ্ট কমিট চেরি-পিক করুন
+git cherry-pick commit-hash
+
+# কমিট রেঞ্জ চেরি-পিক করুন
+git cherry-pick start-commit..end-commit
+```
+
+### সাবমডিউল
+```bash
+# সাবমডিউল যোগ করুন
+git submodule add https://github.com/user/repo.git
+
+# সাবমডিউল আপডেট করুন
+git submodule update --init --recursive
+
+# সাবমডিউল পুল করুন
+git submodule update --remote
+```
+
+### হুক এবং অটোমেশন
+```bash
+# প্রি-কমিট হুক তৈরি করুন
+echo "#!/bin/sh" > .git/hooks/pre-commit
+echo "npm test" >> .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+## টিপস এবং ট্রিকস
+
+### দরকারী শর্টকাট
+```bash
+# শেষ কমিটের হ্যাশ দেখুন
+git rev-parse HEAD
+
+# ব্রাঞ্চের শেষ কমিট দেখুন
+git rev-parse branch-name
+
+# রিমোট URL দেখুন
+git config --get remote.origin.url
+
+# গিট ভার্সন দেখুন
+git --version
+```
+
+### দরকারী অ্যালিয়াস
+```bash
+# অ্যালিয়াস তৈরি করুন
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+
+# ব্যবহার করুন
+git st
+git co branch-name
+git br
+git ci -m "message"
+```
