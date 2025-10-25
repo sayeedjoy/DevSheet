@@ -53,7 +53,7 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/devsheet/devsheet",
+    github: "https://github.com/sayeedjoy/DevSheet",
     twitter: "https://twitter.com/devsheet_bd",
     docs: "/",
     discord: "https://discord.gg/devsheet",

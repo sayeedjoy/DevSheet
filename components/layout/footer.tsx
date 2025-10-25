@@ -7,7 +7,7 @@ export const Footer = memo(function Footer() {
       <Link
         isExternal
         className="flex items-center gap-1 text-current"
-        href="https://github.com"
+        href="https://github.com/sayeedjoy/DevSheet"
         title="GitHub"
       >
         <span className="text-default-600">এটি একটি </span>
