@@ -34,7 +34,10 @@ export const Navbar = memo(function Navbar() {
               src="/source-code.png"
               width={32}
             />
-            <p className="font-bold text-inherit bangla-text text-xl">
+            <p
+              suppressHydrationWarning
+              className="font-bold text-inherit bangla-text text-xl"
+            >
               {siteConfig.name}
             </p>
           </NextLink>

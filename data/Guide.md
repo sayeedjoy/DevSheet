@@ -50,14 +50,13 @@ Regular markdown content...
 
 ## You can also use JSX!
 
-<div className="p-4 bg-primary/10 rounded-lg">
-  Custom styled content
-</div>
+<div className="p-4 bg-primary/10 rounded-lg">Custom styled content</div>
 ```
 
 ### Available Styled Components
 
 All standard markdown elements are pre-styled:
+
 - Headings (h1, h2, h3) - Bangla font support
 - Paragraphs - Bangla font with proper line height
 - Code blocks - Consolas font with syntax highlighting
@@ -68,7 +67,7 @@ All standard markdown elements are pre-styled:
 
 ## 🎨 Using Devicon Icons
 
-The project uses [Devicon](https://devicon.dev/) for all developer tool icons. 
+The project uses [Devicon](https://devicon.dev/) for all developer tool icons.
 
 ### Icon Selection:
 
@@ -79,19 +78,20 @@ The project uses [Devicon](https://devicon.dev/) for all developer tool icons.
 
 **Examples:**
 
-| Tool | Icon Value | Renders As |
-|------|-----------|------------|
-| Git | `git` | `devicon-git-plain` |
-| Docker | `docker` | `devicon-docker-plain` |
-| Linux | `linux` | `devicon-linux-plain` |
+| Tool       | Icon Value   | Renders As                 |
+| ---------- | ------------ | -------------------------- |
+| Git        | `git`        | `devicon-git-plain`        |
+| Docker     | `docker`     | `devicon-docker-plain`     |
+| Linux      | `linux`      | `devicon-linux-plain`      |
 | JavaScript | `javascript` | `devicon-javascript-plain` |
-| Python | `python` | `devicon-python-plain` |
-| React | `react` | `devicon-react-plain` |
-| Node.js | `nodejs` | `devicon-nodejs-plain` |
+| Python     | `python`     | `devicon-python-plain`     |
+| React      | `react`      | `devicon-react-plain`      |
+| Node.js    | `nodejs`     | `devicon-nodejs-plain`     |
 
 ### Full Icon List:
 
 Visit https://devicon.dev/ to browse all available icons. Devicon includes icons for:
+
 - Programming languages
 - Frameworks & libraries
 - Databases
@@ -120,10 +120,13 @@ category: containerization
 ### ইমেজ ম্যানেজমেন্ট
 
 \`\`\`bash
+
 # ইমেজ লিস্ট দেখুন
+
 docker images
 
 # ইমেজ পুল করুন
+
 docker pull image-name
 \`\`\`
 ```
@@ -173,6 +176,7 @@ After adding a new MDX file:
 ## 📚 More Examples
 
 ### JavaScript Cheatsheet:
+
 ```mdx
 ---
 title: JavaScript চিটশিট
@@ -182,15 +186,17 @@ icon: javascript
 ```
 
 ### React Cheatsheet:
+
 ```mdx
 ---
-title: React চিটশিট  
+title: React চিটশিট
 description: রিয়্যাক্ট ডেভেলপমেন্ট গাইড
 icon: react
 ---
 ```
 
 ### Python Cheatsheet:
+
 ```mdx
 ---
 title: Python চিটশিট

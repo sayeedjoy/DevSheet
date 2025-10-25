@@ -5,13 +5,10 @@ icon: git
 category: version-control
 ---
 
-# Git চিটশিট
-
-Git হল একটি ডিস্ট্রিবিউটেড ভার্সন কন্ট্রোল সিস্টেম যা সফটওয়্যার ডেভেলপমেন্টে কোড পরিবর্তন ট্র্যাক করতে ব্যবহৃত হয়।
-
 ## কনফিগারেশন (Configuration)
 
 ### ব্যবহারকারী তথ্য সেট করা
+
 ```bash
 # গ্লোবাল ইউজার নেম সেট করুন
 git config --global user.name "username"
@@ -27,6 +24,7 @@ git config user.email "user@example.com"
 ```
 
 ### কনফিগারেশন বাতিল করা
+
 ```bash
 # গ্লোবাল ইউজার নেম বাতিল করুন
 git config --global --unset-all user.name
@@ -42,6 +40,7 @@ git config --unset user.email
 ```
 
 ### কনফিগারেশন দেখা
+
 ```bash
 # সব কনফিগারেশন দেখুন
 git config --list
@@ -54,6 +53,7 @@ git config user.email
 ## রিপোজিটরি তৈরি এবং ক্লোন
 
 ### নতুন রিপোজিটরি
+
 ```bash
 # নতুন রিপোজিটরি শুরু করুন
 git init
@@ -74,6 +74,7 @@ git clone -b branch-name https://github.com/user/repo.git
 ## ফাইল ট্র্যাকিং এবং স্টেজিং
 
 ### ফাইল অবস্থা দেখা
+
 ```bash
 # রিপোজিটরির বর্তমান অবস্থা দেখুন
 git status
@@ -86,6 +87,7 @@ git status --ignored
 ```
 
 ### ফাইল যোগ এবং স্টেজিং
+
 ```bash
 # নির্দিষ্ট ফাইল স্টেজ করুন
 git add filename.txt
@@ -104,6 +106,7 @@ git add -p
 ```
 
 ### ফাইল আনস্টেজিং
+
 ```bash
 # স্টেজ করা ফাইল আনস্টেজ করুন
 git reset filename.txt
@@ -118,6 +121,7 @@ git reset HEAD~1
 ## কমিট (Commit)
 
 ### কমিট তৈরি
+
 ```bash
 # স্টেজ করা ফাইল কমিট করুন
 git commit -m "commit message"
@@ -133,6 +137,7 @@ git commit -m "commit message" -m "detailed description"
 ```
 
 ### কমিট ইতিহাস
+
 ```bash
 # কমিট ইতিহাস দেখুন
 git log
@@ -151,6 +156,7 @@ git log filename.txt
 ```
 
 ### কমিট পরিবর্তন
+
 ```bash
 # শেষ কমিটের মেসেজ পরিবর্তন করুন
 git commit --amend -m "new message"
@@ -166,6 +172,7 @@ git reset --soft HEAD~1
 ## ব্রাঞ্চ (Branch)
 
 ### ব্রাঞ্চ তৈরি এবং পরিবর্তন
+
 ```bash
 # সব লোকাল ব্রাঞ্চ দেখুন
 git branch
@@ -187,6 +194,7 @@ git checkout -
 ```
 
 ### ব্রাঞ্চ অপারেশন
+
 ```bash
 # ব্রাঞ্চ মুছুন
 git branch -d branch-name
@@ -204,6 +212,7 @@ git branch -m old-name new-name
 ## মার্জ (Merge) এবং রিবেস (Rebase)
 
 ### মার্জিং
+
 ```bash
 # বর্তমান ব্রাঞ্চে অন্য ব্রাঞ্চ মার্জ করুন
 git merge branch-name
@@ -220,6 +229,7 @@ git commit
 ```
 
 ### রিবেসিং
+
 ```bash
 # বর্তমান ব্রাঞ্চ রিবেস করুন
 git rebase branch-name
@@ -237,6 +247,7 @@ git rebase --abort
 ## রিমোট রিপোজিটরি
 
 ### রিমোট যোগ এবং দেখা
+
 ```bash
 # রিমোট রিপোজিটরি যোগ করুন
 git remote add origin https://github.com/user/repo.git
@@ -252,6 +263,7 @@ git remote remove origin
 ```
 
 ### পুশ এবং পুল
+
 ```bash
 # রিমোটে পুশ করুন
 git push origin branch-name
@@ -272,6 +284,7 @@ git fetch origin
 ## স্ট্যাশ (Stash)
 
 ### স্ট্যাশ অপারেশন
+
 ```bash
 # বর্তমান পরিবর্তন স্ট্যাশ করুন
 git stash
@@ -301,6 +314,7 @@ git stash clear
 ## ট্যাগ (Tag)
 
 ### ট্যাগ তৈরি এবং ব্যবস্থাপনা
+
 ```bash
 # লাইটওয়েট ট্যাগ তৈরি করুন
 git tag tag-name
@@ -327,6 +341,7 @@ git push origin --delete tag-name
 ## ফাইল অপারেশন
 
 ### ফাইল মুছে ফেলা
+
 ```bash
 # ফাইল মুছুন এবং স্টেজ করুন
 git rm filename.txt
@@ -339,6 +354,7 @@ git rm -r folder-name
 ```
 
 ### ফাইল মুভ এবং রিনেম
+
 ```bash
 # ফাইল মুভ/রিনেম করুন
 git mv old-name.txt new-name.txt
@@ -350,6 +366,7 @@ git mv file.txt folder/file.txt
 ## অনুসন্ধান এবং ফিল্টার
 
 ### কমিট অনুসন্ধান
+
 ```bash
 # কমিট মেসেজ অনুসন্ধান করুন
 git log --grep="search term"
@@ -365,6 +382,7 @@ git log -S "search term"
 ```
 
 ### ফাইল অনুসন্ধান
+
 ```bash
 # ফাইলে পরিবর্তন অনুসন্ধান করুন
 git log --follow filename.txt
@@ -379,6 +397,7 @@ git log -L 10,20:filename.txt
 ## আদার কমান্ড
 
 ### চেরি-পিক
+
 ```bash
 # নির্দিষ্ট কমিট চেরি-পিক করুন
 git cherry-pick commit-hash
@@ -388,6 +407,7 @@ git cherry-pick start-commit..end-commit
 ```
 
 ### সাবমডিউল
+
 ```bash
 # সাবমডিউল যোগ করুন
 git submodule add https://github.com/user/repo.git
@@ -400,6 +420,7 @@ git submodule update --remote
 ```
 
 ### হুক এবং অটোমেশন
+
 ```bash
 # প্রি-কমিট হুক তৈরি করুন
 echo "#!/bin/sh" > .git/hooks/pre-commit
@@ -410,6 +431,7 @@ chmod +x .git/hooks/pre-commit
 ## টিপস এবং ট্রিকস
 
 ### দরকারী শর্টকাট
+
 ```bash
 # শেষ কমিটের হ্যাশ দেখুন
 git rev-parse HEAD
@@ -425,6 +447,7 @@ git --version
 ```
 
 ### দরকারী অ্যালিয়াস
+
 ```bash
 # অ্যালিয়াস তৈরি করুন
 git config --global alias.st status

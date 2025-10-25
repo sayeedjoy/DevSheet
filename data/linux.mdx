@@ -5,13 +5,10 @@ icon: linux
 category: operating-system
 ---
 
-# Linux চিটশিট
-
-লিনাক্স একটি শক্তিশালী অপারেটিং সিস্টেম যা কমান্ড লাইনের মাধ্যমে সম্পূর্ণ নিয়ন্ত্রণ প্রদান করে।
-
 ## ফাইল সিস্টেম নেভিগেশন
 
 ### ডিরেক্টরি কমান্ড
+
 ```bash
 # বর্তমান ডিরেক্টরি দেখুন
 pwd
@@ -30,6 +27,7 @@ cd ..
 ```
 
 ### ফাইল এবং ডিরেক্টরি তালিকা
+
 ```bash
 # ফাইল তালিকা দেখুন
 ls
@@ -50,6 +48,7 @@ ls -lt
 ## ফাইল অপারেশন
 
 ### ফাইল তৈরি এবং সম্পাদনা
+
 ```bash
 # খালি ফাইল তৈরি করুন
 touch filename.txt
@@ -71,6 +70,7 @@ mv oldname.txt newname.txt
 ```
 
 ### ফাইল মুছে ফেলা
+
 ```bash
 # ফাইল মুছুন
 rm filename.txt
@@ -91,6 +91,7 @@ rm -rf directory/
 ## ফাইল দেখা এবং অনুসন্ধান
 
 ### ফাইল বিষয়বস্তু দেখা
+
 ```bash
 # সম্পূর্ণ ফাইল দেখুন
 cat filename.txt
@@ -110,6 +111,7 @@ more filename.txt
 ```
 
 ### অনুসন্ধান এবং ফাইন্ড
+
 ```bash
 # ফাইল খুঁজুন
 find /path -name "filename"
@@ -133,6 +135,7 @@ grep -i "pattern" filename.txt
 ## পারমিশন এবং মালিকানা
 
 ### ফাইল পারমিশন
+
 ```bash
 # পারমিশন পরিবর্তন করুন
 chmod 755 filename.sh
@@ -154,10 +157,11 @@ chown -R user:group directory/
 ```
 
 ### পারমিশন বোঝা
+
 ```
 rwx rwx rwx
 │   │   └── অন্যান্য (others)
-│   └────── গ্রুপ (group)  
+│   └────── গ্রুপ (group)
 └────────── মালিক (owner)
 
 r = read (4)
@@ -171,6 +175,7 @@ x = execute (1)
 ## প্রসেস ম্যানেজমেন্ট
 
 ### প্রসেস দেখা
+
 ```bash
 # চলমান প্রসেস দেখুন
 ps aux
@@ -186,6 +191,7 @@ ps aux | grep process_name
 ```
 
 ### প্রসেস নিয়ন্ত্রণ
+
 ```bash
 # ব্যাকগ্রাউন্ডে চালান
 command &
@@ -209,6 +215,7 @@ killall process_name
 ## নেটওয়ার্ক কমান্ড
 
 ### নেটওয়ার্ক তথ্য
+
 ```bash
 # IP ঠিকানা দেখুন
 ip addr
@@ -229,6 +236,7 @@ traceroute google.com
 ```
 
 ### ডাউনলোড এবং ট্রান্সফার
+
 ```bash
 # ফাইল ডাউনলোড করুন
 wget https://example.com/file.zip
@@ -246,6 +254,7 @@ ssh user@hostname
 ## সিস্টেম তথ্য
 
 ### হার্ডওয়্যার এবং সিস্টেম
+
 ```bash
 # সিস্টেম তথ্য
 uname -a
@@ -270,6 +279,7 @@ uptime
 ## প্যাকেজ ম্যানেজমেন্ট
 
 ### Ubuntu/Debian (apt)
+
 ```bash
 # প্যাকেজ লিস্ট আপডেট
 sudo apt update
@@ -288,6 +298,7 @@ apt search package_name
 ```
 
 ### CentOS/RHEL (yum/dnf)
+
 ```bash
 # প্যাকেজ ইনস্টল
 sudo yum install package_name
@@ -303,6 +314,7 @@ sudo yum update
 ## কম্প্রেশন এবং আর্কাইভ
 
 ### tar কমান্ড
+
 ```bash
 # ফোল্ডার কম্প্রেস করুন
 tar -czf archive.tar.gz /path/to/folder
@@ -318,6 +330,7 @@ tar -xzf archive.tar.gz -C /path/
 ```
 
 ### zip/unzip
+
 ```bash
 # ফাইল জিপ করুন
 zip archive.zip file1 file2
@@ -335,6 +348,7 @@ unzip archive.zip -d /path/
 ## ইউজার ম্যানেজমেন্ট
 
 ### ইউজার কমান্ড
+
 ```bash
 # নতুন ইউজার যোগ করুন
 sudo useradd username
@@ -358,6 +372,7 @@ who
 ## টিপস এবং ট্রিকস
 
 ### উপকারী শর্টকাট
+
 ```bash
 # কমান্ড হিস্ট্রি
 history
@@ -372,6 +387,7 @@ history
 ```
 
 ### পাইপ এবং রিডাইরেক্ট
+
 ```bash
 # আউটপুট রিডাইরেক্ট করুন
 command > output.txt
@@ -389,4 +405,3 @@ command1 | command2
 command1 && command2
 command1 || command2
 ```
-

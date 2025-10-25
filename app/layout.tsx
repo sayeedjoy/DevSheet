@@ -10,74 +10,94 @@ import { fontSans, fontMono } from "@/config/fonts";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`, // Format: "Page Title | Site Title"
+    default: siteConfig.fullName,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "cheatsheet",
-    "developer",
-    "programming",
-    "বাংলা",
-    "চিটশিট",
-    "ডেভেলপার",
-    "git",
-    "linux",
-    "terminal",
-    "command line",
-  ],
-  authors: [{ name: "DevSheet Team" }],
-  creator: "DevSheet",
-  publisher: "DevSheet",
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
+  creator: siteConfig.author.name,
+  publisher: siteConfig.author.name,
   applicationName: siteConfig.name,
   category: "Technology",
-  icons: {
-    icon: "/favicon.ico",
+  classification: "Programming Reference",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  ),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/manifest.json",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url),
   alternates: {
     canonical: "/",
+    languages: {
+      "bn-BD": "/",
+      "en-US": "/en",
+    },
   },
   openGraph: {
     type: "website",
     locale: "bn_BD",
-    url: "/",
-    title: siteConfig.name,
+    url: siteConfig.url,
+    title: siteConfig.fullName,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: "/og-image.png",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: siteConfig.fullName,
     description: siteConfig.description,
-    creator: "@devsheet",
-    images: ["/og-image.png"],
+    creator: siteConfig.social.twitter,
+    site: siteConfig.social.twitter,
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
   verification: {
-    google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // other: "your-other-verification-code",
+    google:
+      process.env.GOOGLE_VERIFICATION_CODE || "your-google-verification-code",
+    yandex: process.env.YANDEX_VERIFICATION_CODE,
+    yahoo: process.env.YAHOO_VERIFICATION_CODE,
+    other: {
+      "msvalidate.01": process.env.BING_VERIFICATION_CODE || "",
+    },
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-title": siteConfig.name,
+    "mobile-web-app-capable": "yes",
+    "msapplication-TileColor": "#8b5cf6",
+    "msapplication-config": "/browserconfig.xml",
+    "theme-color": "#8b5cf6",
   },
 };
 
@@ -99,7 +119,63 @@ export default function RootLayout({
       className={`${fontSans.variable} ${fontMono.variable}`}
       lang="bn"
     >
-      <head />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: siteConfig.fullName,
+              description: siteConfig.description,
+              url: process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url}/search?q={search_term_string}`,
+                },
+                "query-input": "required name=search_term_string",
+              },
+              publisher: {
+                "@type": "Organization",
+                name: siteConfig.author.name,
+                url: siteConfig.author.url,
+                logo: {
+                  "@type": "ImageObject",
+                  url: `${process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url}/logo.png`,
+                },
+              },
+              sameAs: [
+                siteConfig.links.github,
+                siteConfig.links.twitter,
+                siteConfig.links.discord,
+              ],
+            }),
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: siteConfig.author.name,
+              url: siteConfig.author.url,
+              logo: `${process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url}/logo.png`,
+              description: siteConfig.description,
+              sameAs: [
+                siteConfig.links.github,
+                siteConfig.links.twitter,
+                siteConfig.links.discord,
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                email: siteConfig.author.email,
+              },
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-screen text-foreground bg-background antialiased font-sans">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col min-h-screen">

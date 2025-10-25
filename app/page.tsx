@@ -8,9 +8,8 @@ import { siteConfig } from "@/config/site";
 export const dynamic = "force-static";
 export const revalidate = 3600; // Revalidate every hour
 
-// Home page metadata
 export const metadata: Metadata = {
-  title: "হোম | ডেভ চিটশিট",
+  title: "হোম",
   description: siteConfig.description,
   keywords: [
     "বাংলা চিটশিট",
@@ -19,16 +18,35 @@ export const metadata: Metadata = {
     "git cheatsheet",
     "linux commands",
     "বাংলা প্রোগ্রামিং",
+    "কোডিং গাইড",
+    "ডেভেলপার টুলস",
+    "terminal commands",
+    "programming guide",
   ],
   openGraph: {
     title: `হোম | ${siteConfig.name}`,
     description: siteConfig.description,
     type: "website",
+    locale: "bn_BD",
+    url: process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `হোম | ${siteConfig.name}`,
     description: siteConfig.description,
+    creator: siteConfig.social.twitter,
+    site: siteConfig.social.twitter,
+    images: [siteConfig.ogImage],
   },
 };
 
