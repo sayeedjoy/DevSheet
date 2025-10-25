@@ -141,7 +141,7 @@ export default function ContributorPage() {
                   <Link
                     isExternal
                     className="inline-flex items-center gap-2 font-semibold"
-                    href="https://github.com/sayeedjoy/GymBro"
+                    href="https://github.com/sayeedjoy/DevSheet"
                     rel="noopener noreferrer"
                     target="_blank"
                   >
