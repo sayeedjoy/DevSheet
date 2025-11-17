@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import Script from "next/script";
 import ReactMarkdown from "react-markdown";
 import { Divider } from "@heroui/divider";
 import remarkGfm from "remark-gfm";
@@ -33,7 +34,10 @@ export default async function CheatsheetPage({ params }: CheatsheetPageProps) {
 
   return (
     <>
-      <script
+      <Script
+        id="tech-article-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -84,7 +88,10 @@ export default async function CheatsheetPage({ params }: CheatsheetPageProps) {
           }),
         }}
       />
-      <script
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",

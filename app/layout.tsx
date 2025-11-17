@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import { Providers } from "./providers";
 
@@ -120,7 +121,22 @@ export default function RootLayout({
       lang="bn"
     >
       <head>
-        <script
+        {/* Resource hints for better performance */}
+        <link rel="preconnect" href="https://fonts.maateen.me" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.maateen.me" />
+        {/* Preload critical font */}
+        <link
+          rel="preload"
+          href="https://fonts.maateen.me/solaiman-lipi/font.css"
+          as="style"
+        />
+      </head>
+      <body className="min-h-screen text-foreground bg-background antialiased font-sans">
+        {/* JSON-LD structured data - loaded after page interactive */}
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -153,7 +169,10 @@ export default function RootLayout({
             }),
           }}
         />
-        <script
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -175,8 +194,6 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body className="min-h-screen text-foreground bg-background antialiased font-sans">
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col min-h-screen">
             <Navbar />

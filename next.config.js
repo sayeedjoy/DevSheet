@@ -15,6 +15,8 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Enable image optimization
+    unoptimized: false,
   },
 
   // Enable compression for better performance
@@ -27,6 +29,7 @@ const nextConfig = {
       "@heroui/theme",
       "react-icons",
       "devicon",
+      "framer-motion",
     ],
     // optimizeCss: true, // Disabled due to critters module issue
   },
@@ -34,7 +37,10 @@ const nextConfig = {
   // Production source maps (disable for smaller builds)
   productionBrowserSourceMaps: false,
 
-  // Headers for SEO and security
+  // Enable SWC minification (faster than Terser)
+  swcMinify: true,
+
+  // Headers for SEO, security, and performance
   async headers() {
     return [
       {
@@ -59,6 +65,42 @@ const nextConfig = {
         ],
       },
       {
+        source: "/_next/static/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/_next/image(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/favicon.ico",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/(.*\\.(?:ico|png|jpg|jpeg|svg|webp|avif|woff|woff2|ttf|otf))",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
         source: "/sitemap.xml",
         headers: [
           {
@@ -73,6 +115,15 @@ const nextConfig = {
           {
             key: "Cache-Control",
             value: "public, max-age=86400, s-maxage=86400",
+          },
+        ],
+      },
+      {
+        source: "/api/search",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, s-maxage=300, stale-while-revalidate=600",
           },
         ],
       },

@@ -1,6 +1,14 @@
 /* Import SolaimanLipi font for Bangla text with display swap for better performance */
 @import url("https://fonts.maateen.me/solaiman-lipi/font.css");
 
+/* Preload critical fonts */
+@font-face {
+  font-family: "SolaimanLipi";
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+}
+
 @import "tailwindcss";
 
 @config "../tailwind.config.js";
