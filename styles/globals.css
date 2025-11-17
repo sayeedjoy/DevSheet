@@ -47,6 +47,16 @@ pre[class*="language-"] {
 .bangla-text strong,
 .bangla-text div {
   font-family: var(--font-bangla) !important;
+  /* Prevent font clipping - only overflow fixes, no size changes */
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+
+/* Prevent containers from clipping Bangla text */
+.bangla-text,
+.bangla-text * {
+  max-height: none !important;
+  clip-path: none !important;
 }
 
 /* Line clamp utilities for text truncation */
@@ -62,6 +72,17 @@ pre[class*="language-"] {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Override line-clamp for Bangla text to prevent clipping */
+.bangla-text.line-clamp-2,
+.bangla-text.line-clamp-3,
+.bangla-text .line-clamp-2,
+.bangla-text .line-clamp-3 {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
 }
 
 /* Ensure code inside Bangla text still uses Consolas */

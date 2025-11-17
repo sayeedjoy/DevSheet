@@ -5,7 +5,7 @@ export const siteConfig = {
   fullName: "ডেভ চিটশিট - বাংলা প্রোগ্রামিং রেফারেন্স",
   description: "একটি ব্যক্তিগত চিটশিট সংগ্রহ সাইট :)",
   shortDescription: "বাংলা প্রোগ্রামিং চিটশিট",
-  url: "https://devsheet.bd",
+  url: "https://dev.sayeedjoy.com",
   ogImage: "/og-image.png",
   keywords: [
     "বাংলা চিটশিট",
