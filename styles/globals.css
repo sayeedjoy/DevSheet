@@ -16,6 +16,24 @@
   --font-code: "Consolas", "Courier New", monospace;
 }
 
+/* CLS Prevention: Reserve space for content before fonts load */
+html {
+  /* Prevent layout shifts from scrollbar */
+  scrollbar-gutter: stable;
+}
+
+/* Optimize paint and layout for main containers */
+main {
+  contain: layout style;
+}
+
+/* Reduce repaints on interactive elements */
+a,
+button,
+[role="button"] {
+  will-change: transform, opacity;
+}
+
 /* Default font: Inter for all text */
 * {
   font-family:

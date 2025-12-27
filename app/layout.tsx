@@ -124,6 +124,7 @@ export default function RootLayout({
         {/* Resource hints for better performance */}
         <link rel="preconnect" href="https://fonts.maateen.me" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.maateen.me" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         {/* Preload critical font stylesheet */}
         <link
           rel="preload"
@@ -134,6 +135,11 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://fonts.maateen.me/solaiman-lipi/font.css"
+        />
+        {/* Devicon CSS for programming language icons */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
       </head>
       <body className="min-h-screen text-foreground bg-background antialiased font-sans">

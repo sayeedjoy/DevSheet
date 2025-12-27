@@ -31,6 +31,7 @@ export const Navbar = memo(function Navbar() {
               alt="Logo"
               className="w-8 h-8"
               height={32}
+              priority
               src="/source-code.png"
               width={32}
             />
