@@ -25,20 +25,56 @@ const nextConfig = {
   // Optimize CSS and packages
   experimental: {
     optimizePackageImports: [
+      "@heroui/accordion",
+      "@heroui/alert",
+      "@heroui/autocomplete",
+      "@heroui/avatar",
+      "@heroui/badge",
+      "@heroui/button",
+      "@heroui/card",
+      "@heroui/chip",
+      "@heroui/code",
+      "@heroui/divider",
+      "@heroui/drawer",
+      "@heroui/dropdown",
+      "@heroui/form",
+      "@heroui/framer-utils",
+      "@heroui/image",
+      "@heroui/input",
+      "@heroui/kbd",
+      "@heroui/link",
+      "@heroui/listbox",
+      "@heroui/modal",
+      "@heroui/navbar",
+      "@heroui/pagination",
+      "@heroui/popover",
+      "@heroui/progress",
+      "@heroui/radio",
+      "@heroui/react-utils",
+      "@heroui/scroll-shadow",
+      "@heroui/select",
+      "@heroui/skeleton",
+      "@heroui/snippet",
+      "@heroui/spacer",
+      "@heroui/spinner",
+      "@heroui/switch",
       "@heroui/system",
+      "@heroui/table",
+      "@heroui/tabs",
       "@heroui/theme",
+      "@heroui/toast",
+      "@heroui/tooltip",
+      "@heroui/user",
       "react-icons",
       "devicon",
       "framer-motion",
+      "lucide-react",
     ],
     // optimizeCss: true, // Disabled due to critters module issue
   },
 
   // Production source maps (disable for smaller builds)
   productionBrowserSourceMaps: false,
-
-  // Enable SWC minification (faster than Terser)
-  swcMinify: true,
 
   // Headers for SEO, security, and performance
   async headers() {

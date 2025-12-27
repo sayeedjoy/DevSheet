@@ -1,8 +1,12 @@
 import { Metadata } from "next";
-
+import dynamicImport from "next/dynamic";
 import { HomeHero } from "@/components/home/home-hero";
-import { CheatsheetGrid } from "@/components/cheatsheet/cheatsheet-grid";
 import { siteConfig } from "@/config/site";
+
+const CheatsheetGrid = dynamicImport(() => import("@/components/cheatsheet/cheatsheet-grid").then(mod => mod.CheatsheetGrid), {
+  loading: () => <div className="h-[400px] w-full flex items-center justify-center">Loading...</div>,
+  ssr: true,
+});
 
 // Enable static generation
 export const dynamic = "force-static";

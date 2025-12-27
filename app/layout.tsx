@@ -124,11 +124,16 @@ export default function RootLayout({
         {/* Resource hints for better performance */}
         <link rel="preconnect" href="https://fonts.maateen.me" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.maateen.me" />
-        {/* Preload critical font */}
+        {/* Preload critical font stylesheet */}
         <link
           rel="preload"
           href="https://fonts.maateen.me/solaiman-lipi/font.css"
           as="style"
+        />
+        {/* Load font stylesheet */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.maateen.me/solaiman-lipi/font.css"
         />
       </head>
       <body className="min-h-screen text-foreground bg-background antialiased font-sans">

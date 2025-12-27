@@ -3,7 +3,8 @@
 import { memo } from "react";
 import { Card, CardBody } from "@heroui/card";
 import { Link } from "@heroui/link";
-import "devicon/devicon.min.css";
+// Removed global devicon CSS import from here to reduce bundle size
+// We will use a more efficient way to load icons
 
 interface CheatsheetCardProps {
   title: string;
